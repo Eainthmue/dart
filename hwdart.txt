@@ -1,0 +1,47 @@
+
+class task{
+  int? id;
+  String? taskname;
+  String? taskstatus;
+  int? taskpriority;
+  task({this.id,this.taskname,this.taskstatus,this.taskpriority});
+}
+class taskProcess{
+  List<task> taskList=[];
+  void addTask(task t){
+  taskList.add(t);
+  }
+  void printTask(){
+    taskList.forEach((Task){
+      print("ID Name Status   Priority");
+      print("${Task.id}  ${Task.taskname}   ${Task.taskstatus}    ${Task.taskpriority}");
+      });
+  }
+  void deleteTask(int taskid){
+    bool b= false;
+    taskList.forEach((Task){
+      if(taskid == Task.id){
+        b=true;
+      }
+    });
+    if(b==true){
+      taskList.removeAt(taskid);
+    }
+  }
+}
+void main() {
+taskProcess tp= new taskProcess();
+task t=new task(id:1,taskname:"hw",taskstatus:"start",taskpriority:5);
+tp.addTask(t);
+
+task t2 = new task(id:2,taskname:"hw",taskstatus:"finish",taskpriority:5);
+tp.addTask(t2);
+  
+task t3 = new task(id:3,taskname:"hw",taskstatus:"unfinish",taskpriority:1);
+tp.addTask(t3);
+tp.deleteTask(2);
+tp.printTask();
+
+
+
+}
