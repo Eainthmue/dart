@@ -12,20 +12,24 @@ class taskProcess{
   taskList.add(t);
   }
   void printTask(){
-    taskList.forEach((Task){
+    taskList.forEach((task){
       print("ID Name Status   Priority");
-      print("${Task.id}  ${Task.taskname}   ${Task.taskstatus}    ${Task.taskpriority}");
+      print("${task.id}  ${task.taskname}   ${task.taskstatus}    ${task.taskpriority}");
       });
   }
   void deleteTask(int taskid){
     bool b= false;
-    taskList.forEach((Task){
-      if(taskid == Task.id){
-        b=true;
+    int i=0;
+    int? deleteid;
+    taskList.forEach((task){
+      if(taskid == task.id){
+        i=i+1;
+        b=true;      
       }
     });
     if(b==true){
-      taskList.removeAt(taskid);
+      deleteid= taskid-i;
+      taskList.removeAt(deleteid);
     }
   }
 }
@@ -39,7 +43,7 @@ tp.addTask(t2);
   
 task t3 = new task(id:3,taskname:"hw",taskstatus:"unfinish",taskpriority:1);
 tp.addTask(t3);
-tp.deleteTask(2);
+tp.deleteTask(1);
 tp.printTask();
 
 
